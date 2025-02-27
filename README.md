@@ -18,20 +18,22 @@ The following testing areas will be covered:
 - **Security Testing:** Identify vulnerabilities like unauthorized access.
 
 ## 2. **Test Deliverables**
-- **Test Plan Document** (This document)
-- **Postman Collection with Test Cases**
-- **Newman Execution Report**
-- **Performance Test Report (K6)**
-- **Security Findings Report**
+- **Final Test Report**: The document with all the results combined.
+- **Postman Collection with Test Cases**: scripts inside the folder: scipts/Postman
+- **Newman Execution**: Process described in the Final Test Report, combined with how it was integrated with a CI/CD tool
+- **Performance Test Report (K6)**: scripts inside the folder: scipts/K6
+- **Security Findings Report**:
+- **Extra reports:** Extra reports and comple test cases can be found inside the folder: reports
 
 ## 3. **Test Completion Criteria**
 - All functional test cases have passed.
+- Automation tests running in a CI/CD pipeline.
 - Performance tests results are collected.
 - Security testing is completed.
 - Test execution summary is documented.
 
 ## 4. **Appendix & References**
-- **API Documentation:** [\[CoinGecko API Docs\]](https://docs.coingecko.com/reference/introduction)
+- **API Documentation:** [\[CoinGecko API Docs\]](https://docs.coingecko.com/v3.0.1/reference/introduction)
 - **CI/CD Pipeline Configuration:** [\[Link to CI/CD setup\]](https://github.com/felipejgribeiro/onchain-qa-api-test/actions)
 
 ---
