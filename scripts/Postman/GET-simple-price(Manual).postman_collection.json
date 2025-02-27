@@ -1,0 +1,445 @@
+{
+	"info": {
+		"_postman_id": "c02270be-8088-4690-a165-07dceed89440",
+		"name": "GET /simple/price (Manual)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1245945"
+	},
+	"item": [
+		{
+			"name": "GET /simple/price - TC001 - Valid Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response contains bitcoin price\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('bitcoin');",
+							"    pm.expect(jsonData.bitcoin).to.have.property('usd');",
+							"    pm.expect(jsonData.bitcoin.usd).to.be.a('number');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/simple/price?ids=bitcoin&vs_currencies=usd",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"simple",
+						"price"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "bitcoin"
+						},
+						{
+							"key": "vs_currencies",
+							"value": "usd"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /simple/price - TC002 - Valid Request Multiple Crypto and Currencies",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response contains bitcoin price\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('bitcoin');",
+							"    pm.expect(jsonData).to.have.property('ethereum');",
+							"    pm.expect(jsonData.bitcoin).to.have.property('usd');",
+							"    pm.expect(jsonData.bitcoin).to.have.property('eur');",
+							"    // validate numbers",
+							"    pm.expect(jsonData.bitcoin.usd).to.be.a('number');",
+							"    pm.expect(jsonData.bitcoin.eur).to.be.a('number');",
+							"    pm.expect(jsonData.ethereum.usd).to.be.a('number');",
+							"    pm.expect(jsonData.ethereum.eur).to.be.a('number');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/simple/price?ids=bitcoin,ethereum&vs_currencies=usd,eur",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"simple",
+						"price"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "bitcoin,ethereum"
+						},
+						{
+							"key": "vs_currencies",
+							"value": "usd,eur"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /simple/price - TC003 - Invalid Cryptocurrency",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response should be empty\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('object');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/simple/price?ids=invalidcoin&vs_currencies=usd",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"simple",
+						"price"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "invalidcoin"
+						},
+						{
+							"key": "vs_currencies",
+							"value": "usd"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /simple/price - TC004 - Invalid Currency",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response should be empty\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('object');",
+							"    // for both invalid this assert must be gone",
+							"    pm.expect(jsonData).to.have.property('bitcoin');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/simple/price?ids=bitcoin&vs_currencies=invalidcurrency",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"simple",
+						"price"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "bitcoin"
+						},
+						{
+							"key": "vs_currencies",
+							"value": "invalidcurrency"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /simple/price - TC005 - Missing Parameters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Should return an error or empty response\", function () {",
+							"    pm.response.to.have.status(422);",
+							"});",
+							"",
+							"pm.test(\"Validate error message from ids\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('error');",
+							"    pm.expect(jsonData.error).to.eql('Missing parameter ids');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/simple/price",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"simple",
+						"price"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /simple/price - TC006 - Validate additional boolean parameters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response contains all the fields\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('bitcoin');",
+							"    // usd",
+							"    pm.expect(jsonData.bitcoin).to.have.property('usd');",
+							"    pm.expect(jsonData.bitcoin.usd).to.be.a('number');",
+							"    // usd_market_cap",
+							"    pm.expect(jsonData.bitcoin).to.have.property('usd_market_cap');",
+							"    pm.expect(jsonData.bitcoin.usd).to.be.a('number');",
+							"    // usd_24h_vol",
+							"    pm.expect(jsonData.bitcoin).to.have.property('usd_24h_vol');",
+							"    pm.expect(jsonData.bitcoin.usd).to.be.a('number');",
+							"    // usd_24h_change",
+							"    pm.expect(jsonData.bitcoin).to.have.property('usd_24h_change');",
+							"    pm.expect(jsonData.bitcoin.usd).to.be.a('number');",
+							"    // last_updated_at",
+							"    pm.expect(jsonData.bitcoin).to.have.property('last_updated_at');",
+							"    pm.expect(jsonData.bitcoin.usd).to.be.a('number');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/simple/price?ids=bitcoin&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"simple",
+						"price"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "bitcoin"
+						},
+						{
+							"key": "vs_currencies",
+							"value": "usd"
+						},
+						{
+							"key": "include_market_cap",
+							"value": "true"
+						},
+						{
+							"key": "include_24hr_vol",
+							"value": "true"
+						},
+						{
+							"key": "include_24hr_change",
+							"value": "true"
+						},
+						{
+							"key": "include_last_updated_at",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /simple/price - TC007 - Validate precision parameter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Validates the precision\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('bitcoin');",
+							"    // usd",
+							"    pm.expect(jsonData.bitcoin).to.have.property('usd');",
+							"    pm.expect(jsonData.bitcoin.usd).to.be.a('number');",
+							"    //validate precision point",
+							"    pm.expect(String(jsonData.bitcoin.usd).split(\".\")[1]?.length == 2).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/simple/price?ids=bitcoin&vs_currencies=usd&precision=2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"simple",
+						"price"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "bitcoin"
+						},
+						{
+							"key": "vs_currencies",
+							"value": "usd"
+						},
+						{
+							"key": "precision",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{api_key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "x-cg-demo-api-key",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
