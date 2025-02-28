@@ -34,6 +34,7 @@ The following testing areas will be covered:
 
 ## 4. **Appendix & References**
 - **API Documentation:** [\[CoinGecko API Docs\]](https://docs.coingecko.com/v3.0.1/reference/introduction)
+- **OWASP ZAP Download:** [\[Link to Download\]](https://www.zaproxy.org/download/)
 - **CI/CD Pipeline Configuration:** [\[Link to CI/CD setup\]](https://github.com/felipejgribeiro/onchain-qa-api-test/actions)
 
 ---

